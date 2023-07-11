@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mata-Mosquito</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="imagens/mata_mosca.png" type="image/x-icon">
+    <script src="script.js"></script>
+
+</head>
+<body id="corpo">
+
+    <div class="jogo">
+        <p>Tempo Restante: <span id="cronometro">0</span></p>
+        <p>Pontos: <span id="pontos">0</span></p>
+        <p>Vidas: <span id="vidas">0</span></p>
+    </div>
+
+
+
+    <script>
+
+        
+
+        var x = setInterval(function (){
+
+            criarMosca()
+            
+
+            if (tempo == 0){
+                clearInterval(x)
+            }
+
+            fimDeJogo()
+
+        },1000)
+
+
+    </script>
+</body>
+</html>
