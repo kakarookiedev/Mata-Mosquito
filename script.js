@@ -3,21 +3,21 @@ var pontos = 0
 var vida = 3
 
 
+var alturaResize
+var larguraResize
+function responsive(){
+    alturaResize = window.innerHeight
+    larguraResize = window.innerWidth
+}
+
+
 var dificuldade = window.location.search
 dificuldade = dificuldade.replace('?',' ')
 dificuldade = parseInt(dificuldade)
-console.log(dificuldade)
-
-if (dificuldade == 2){
-    tempo = 40
-}
-if (dificuldade == 3){
-    vida = 2
-    tempo = 30
-}
 
 
-var cronometro = setInterval(function(){
+
+function cronometro(){
 
     if(document.getElementById("cronometro")){
         document.getElementById("cronometro").innerHTML = tempo
@@ -26,8 +26,7 @@ var cronometro = setInterval(function(){
         clearInterval(cronometro)
     }
     tempo -= 1
-    
-},1000)
+}
 
 function criarMosca(){
 
@@ -39,11 +38,9 @@ function criarMosca(){
 		document.getElementById('mosca').remove()
 	}
 
-    var alturaTela = window.innerHeight
-    var larguraTela = window.innerWidth
 
-    var posicaoX = Math.floor(Math.random() * larguraTela)
-    var posicaoY = Math.floor(Math.random() * alturaTela)
+    var posicaoX = Math.floor(Math.random() * larguraResize) - 100
+    var posicaoY = Math.floor(Math.random() * alturaResize) - 100
 
 	posicaoX = posicaoX < 0 ? 0 : posicaoX
 	posicaoY = posicaoY < 0 ? 0 : posicaoY
@@ -56,62 +53,7 @@ function criarMosca(){
     mosca.id = 'mosca'
     mosca.className = ''
 
-    console.log(mosca.className)
-
-    var tamanhoMosca = Math.floor(Math.random() * 3)
-    console.log(tamanhoMosca)
-    console.log(dificuldade)
-
-    switch(dificuldade){
-        case 1: 
-
-            console.log('Caso dificuldade inicial')
-            switch(tamanhoMosca){
-                case 0:
-                    mosca.className = 'mosca1'
-                break
-                case 1:
-                    mosca.className = 'mosca2'
-                break
-                case 2:
-                    mosca.className = 'mosca1'
-                break
-            }
-        break
-        case 2:
-            console.log('Caso dificuldade media')
-            switch(tamanhoMosca){
-                case 0:
-                    mosca.className = 'mosca1'
-                break
-                case 1:
-                    mosca.className = 'mosca2'
-                break
-                case 2:
-                    mosca.className = 'mosca3'
-                break
-            }
-        break
-        case 3:
-            console.log('Caso dificuldade maxima')
-            switch(tamanhoMosca){
-                case 0:
-                    mosca.className = 'mosca1'
-                break
-                case 1:
-                    mosca.className = 'mosca2'
-                break
-                case 2:
-                    mosca.className = 'mosca3'
-                break
-            }
-        break
-    }
-
-
-
-    
-    console.log('tamanho da mosca = '+ tamanhoMosca)
+    modoJogo(mosca)
 
     mosca.onclick = function(){
         if (dificuldade == 3){
@@ -121,11 +63,8 @@ function criarMosca(){
         }
 
         vida += 1
-        console.log(pontos)
         document.getElementById('mosca').remove()
         document.getElementById('pontos').innerHTML = pontos
-
-        mosca.onclick = true ? console.log('true') : console.log('falha')
     }
 
     var corpo = document.getElementById('corpo')
@@ -142,6 +81,61 @@ function criarMosca(){
     }
 
     document.body.appendChild(mosca)
+}
+
+if (dificuldade == 2){
+    tempo = 40
+}
+if (dificuldade == 3){
+    vida = 2
+    tempo = 30
+}
+
+function modoJogo(mosca){
+
+    var tamanhoMosca = Math.floor(Math.random() * 3)
+
+    switch(dificuldade){
+        case 1: 
+            switch(tamanhoMosca){
+                case 0:
+                    mosca.className = 'mosca1'
+                break
+                case 1:
+                    mosca.className = 'mosca2'
+                break
+                case 2:
+                    mosca.className = 'mosca1'
+                break
+            }
+        break
+        case 2:
+            switch(tamanhoMosca){
+                case 0:
+                    mosca.className = 'mosca1'
+                break
+                case 1:
+                    mosca.className = 'mosca2'
+                break
+                case 2:
+                    mosca.className = 'mosca3'
+                break
+            }
+        break
+        case 3:
+            switch(tamanhoMosca){
+                case 0:
+                    mosca.className = 'mosca1'
+                break
+                case 1:
+                    mosca.className = 'mosca2'
+                break
+                case 2:
+                    mosca.className = 'mosca3'
+                break
+            }
+        break
+    }
 }
 
 

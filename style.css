@@ -1,10 +1,12 @@
 html{
     cursor: url(imagens/mata_mosca.png), auto;
 }
+*{
+    overflow: hidden;
+}
 
 body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    overflow: hidden;
     background-image: url(imagens/bg.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -21,6 +23,7 @@ body{
 .imagem-game{
     height: 550px;
 }
+
 
 .botao{
     width: 300px;
@@ -83,6 +86,30 @@ select{
     height: 300px;
     color: white;
     font-size: 1.6em;
-    padding: 5px;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .imagem-game{
+        width: 470px;
+        height: 50vh;
+    }
+    body{
+        background-size: 200%;
+    }
+    
+}
+  
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    .imagem-game{
+        width: 90vw;
+        height: 50vh;
+        padding: 5px;
+    }
+    body{
+        background-size: 300%;
+    }
 }
 

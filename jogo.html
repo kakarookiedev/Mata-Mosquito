@@ -11,7 +11,7 @@
     <script src="script.js"></script>
 
 </head>
-<body id="corpo">
+<body id="corpo" onload="responsive()">
 
     <div class="jogo">
         <p>Tempo Restante: <span id="cronometro">0</span></p>
@@ -28,6 +28,7 @@
         var x = setInterval(function (){
 
             criarMosca()
+            cronometro()
             
 
             if (tempo == 0){
