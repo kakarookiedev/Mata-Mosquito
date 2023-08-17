@@ -156,7 +156,7 @@ function status(){
         pontuacao = pontuacao.replace('?', ' ')
         pontuacao = parseInt(pontuacao)
         document.getElementById('pontuacao').innerHTML = pontuacao
-        if (pontuacao >= 300){
+        if (pontuacao >= 300 ){
             document.getElementById('status').innerHTML = 'Venceu!'
         } else {
             document.getElementById('status').innerHTML = 'Perdeu!'
